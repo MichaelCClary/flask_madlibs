@@ -12,14 +12,7 @@ def home():
 
 @app.route("/story")
 def create_story():
-    place = request.args["place"]
-    noun = request.args["noun"]
-    verb = request.args["verb"]
-    adjective = request.args["adjective"]
-    plural_noun = request.args["plural_noun"]
-    ans = {"place": place, "noun": noun, "verb": verb,
-           "adjective": adjective, "plural_noun": plural_noun}
 
-    text = story.generate(ans)
+    text = story.generate(request.args)
 
     return render_template("story.html", text=text)
